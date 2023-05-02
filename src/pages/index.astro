@@ -1,9 +1,74 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+// data
+import socialLinks from "../data/socialLinks";
 ---
 
-<Layout>
-  <section class="flex justify-center p-10">
-    <h1 class="font-bold">= = = work in progress = = =</h1>
-  </section>
+<Layout title="lnxbytes">
+  <main>
+    <header class="md:flex justify-between">
+      <div class="md:w-[65%] mt-7">
+        <h1 class="text-4xl font-extrabold">
+          Hi there, I'm <span class="text-red-500 font-normal font-brand">Sachin</span
+          >
+        </h1>
+        <p class="text-xl py-3 leading-8">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, magni
+          corporis error, laborum laboriosam voluptatum illo! Assumenda est ipsa
+          dolore, praesentium iusto animi reiciendis error aliquid suscipit.
+        </p>
+        <div class="flex gap-7 items-center justify-start py-3">
+          {
+            socialLinks.map((slink) => (
+              <a href={slink.link}>
+                <img src={slink.icon} width="30" alt="" />
+              </a>
+            ))
+          }
+        </div>
+    </div>
+    <div class="">
+      <img
+        src="/images/boy.svg"
+        class="mx-auto pt-3 sm:pt-0 w-[75%] sm:w-[60%] md:w-[100%]"
+        alt=""
+      />
+    </div>
+</header>
+
+      <!-- recent projects -->
+      <section class="mt-7">
+        <div class="flex items-center justify-between">
+          <h2 class="font-bold text-2xl">
+            Recent <a
+              href="/projects"
+              class="text-red-500 font-normal font-brand">Projects</a>
+          </h2>
+        </div>
+        <div class="">
+          <!--  -->
+        </div>
+      </section>
+
+      <!-- recent posts -->
+      <section class="mt-7">
+        <div class="flex items-center justify-between">
+          <h2 class="font-bold text-2xl">
+            Resent <a href="/blog" class="text-red-500 font-normal font-brand"
+              >Posts</a>
+          </h2>
+          <a href="/blog"
+            >View all posts<img
+              src="/images/icons/right.svg"
+              class="w-6 inline-block"
+              alt=""
+            /></a
+          >
+        </div>
+        <div class="">
+          <!--  -->
+        </div>
+      </section>
+  </main>
 </Layout>

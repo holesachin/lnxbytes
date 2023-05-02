@@ -1,0 +1,8 @@
+---
+const { cats } = Astro.props;
+---
+<div class="flex justify-center items-center gap-4 font-bold flex-wrap">
+    {cats.map((cat: string) => 
+    <a href={`/blog/${cat}`} class="bg-red-500 text-white py-1 px-3 rounded-sm transition hover:text-white hover:opacity-80 duration-600">{cat}</a>
+    )}
+</div>

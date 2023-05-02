@@ -1,0 +1,38 @@
+---
+// components
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+import Categories from "../../components/Categories.astro"
+
+const title = "lnxBytes blog";
+const posts = await Astro.glob("./*.mdx");
+// const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft);
+
+//  data 
+import { categories } from "../../data/blogData"
+---
+
+<Layout title={title}>
+   <div class="my-5 py-3 space-y-4">
+       <h2 class="font-brand text-xl">categories</h2>
+       <div class="font-bold text-white flex flex-wrap justify-start text-center">
+        <Categories cats={categories} />
+       </div>
+   </div>
+  <section
+    class="grid xl:grid-cols-1 gap-3 justify-center justify-items-center lg:container mx-auto"
+  >
+  {
+    posts.map((post) => (
+      <a href={post.url} class="sm:active:translate-y-3 sm:transition sm:ease-in-out">
+        <Card
+        title={post.frontmatter.title}
+        body={post.frontmatter.description}
+        img={post.frontmatter.imgSrc}
+        date={post.frontmatter.date}
+        />
+        </a>
+      ))
+    }
+  </section>
+</Layout>

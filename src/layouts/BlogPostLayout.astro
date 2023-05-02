@@ -1,0 +1,36 @@
+---
+// components
+import Categories from "../components/Categories.astro";
+
+// layout
+import Layout from "./Layout.astro";
+
+// props
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={`lnxBytes - ${frontmatter.title}`}>
+  <header class="">
+    <div class="text-center capitalize p-5">
+      <h1 class="text-3xl font-extrabold">{frontmatter.title}</h1>
+      <div class="text-zinc-500 text-sm p-3">
+        by <span class="font-semibold text-zinc-700">{frontmatter.author}</span>
+        on <span class="font-semibold text-zinc-700">{frontmatter.date}</span>
+      </div>
+    </div>
+    <img src={frontmatter.img.url} class="sm:max-w-3xl mx-auto" alt={frontmatter.img.alt}>
+    <div class="">
+        <div class="py-8 md:p-10">
+            <slot />
+        </div>
+        <div class="">
+          <!-- sidebar -->
+        </div>
+    </div>
+    <div class="text-center">
+        <Categories cats={frontmatter.cats}/>
+    </div>
+  </header>
+</Layout>
+
+

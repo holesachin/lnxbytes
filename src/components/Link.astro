@@ -1,0 +1,45 @@
+---
+// import type { Props } from "astro";
+
+interface Props {
+  text: string;
+  to: string;
+  style: "primary" | "secondary";
+  icon?: {
+    name: string;
+    side: "left" | "right";
+  };
+  isFilled?: boolean;
+  borderVisible?: boolean;
+  classes?: string;
+}
+
+const {
+  text,
+  to,
+//   style,
+  icon,
+  isFilled = true,
+  borderVisible = false,
+  classes,
+  ...rest
+} = Astro.props as Props;
+---
+
+<a
+  href={to}
+  class:list={[classes, { filled: isFilled, bordered: borderVisible }]}
+  {...rest}
+>
+  {
+    icon && icon.side === "left" && (
+      <img src={icon.name} height="24" width="24" alt="icon" />
+    )
+  }
+  <span>{text}</span>
+  {
+    icon && icon.side === "right" && (
+      <img src={icon.name} height="24" width="24" alt="icon" />
+    )
+  }
+</a>
